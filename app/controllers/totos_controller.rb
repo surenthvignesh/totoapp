@@ -17,6 +17,20 @@ class TotosController < ApplicationController
     @toto = Toto.find(params[:id])
   end
 
+  def edit
+    @toto = Toto.find(params[:id])
+  end
+
+  def update
+    @toto = Toto.find(params[:id])
+    if @toto.update(toto_params)
+      flash[:notice] = "Toto was successfully updated"
+       redirect_to toto_path(@toto)
+    else
+      render 'edit'
+    end
+  end
+
   private
   def toto_params
     params.require(:toto).permit(:name, :description)
