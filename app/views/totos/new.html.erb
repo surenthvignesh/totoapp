@@ -1,0 +1,33 @@
+<h1 style="margin-left:40%;margin-top:5%;">create a new toto</h1><br><br>
+<% if @toto.errors.any? %>
+  <h3>The following errors prevents the toto from beign saved</h3>
+  <ul>
+    <% @toto.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @toto do |t| %>
+<div style = "margin-left:35%;">
+  <table>
+      <tr>
+        <td>
+            <%= t.label :name %></td>
+            <td><%= t.text_field :name %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <%= t.label :description %></td>
+            <td><%= t.text_area :description %>
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <%= t.submit %>
+        </td>
+      </tr>
+  </table>
+</div>
+<% end %>
