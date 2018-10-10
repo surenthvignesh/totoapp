@@ -13,8 +13,9 @@
       <td ><%= t.id %></td>
       <td ><%= t.name %></td>
       <td ><%= t.description %></td>
-      <td><%= link_to "Edit", edit_toto_path(t)%></td>
+      <td><%= link_to "Edit", edit_toto_path(t)%></td> 
       <td><%= link_to "Show", toto_path(t)%></td>
+      <td><%= link_to "Delete", toto_path(t), method: :delete, data: {confirm: "Are you sure ?"}%></td>
     </tr>
   <% end %>
 

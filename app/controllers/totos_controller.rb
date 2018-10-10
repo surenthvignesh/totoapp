@@ -35,6 +35,12 @@ class TotosController < ApplicationController
     @totos = Toto.all
   end
 
+  def destroy
+    @toto = Toto.find(params[:id])
+    @toto.destroy
+    flash[:notice] = "Toto was deleted successfully"
+    redirect_to totos_path
+  end
   private
   def toto_params
     params.require(:toto).permit(:name, :description)
