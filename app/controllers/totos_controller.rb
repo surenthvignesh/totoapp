@@ -1,4 +1,7 @@
 class TotosController < ApplicationController
+
+  before_action :set_toto, only: [:edit, :show, :update, :destroy]
+
   def new
     @toto = Toto.new
   end
@@ -14,15 +17,15 @@ class TotosController < ApplicationController
   end
 
   def show
-    @toto = Toto.find(params[:id])
+
   end
 
   def edit
-    @toto = Toto.find(params[:id])
+
   end
 
   def update
-    @toto = Toto.find(params[:id])
+
     if @toto.update(toto_params)
       flash[:notice] = "Toto was successfully updated"
        redirect_to toto_path(@toto)
@@ -36,7 +39,7 @@ class TotosController < ApplicationController
   end
 
   def destroy
-    @toto = Toto.find(params[:id])
+
     @toto.destroy
     flash[:notice] = "Toto was deleted successfully"
     redirect_to totos_path
@@ -45,8 +48,11 @@ class TotosController < ApplicationController
   def toto_params
     params.require(:toto).permit(:name, :description)
   end
-end
 
+  def set_toto
+    @toto = Toto.find(params[:id])
+  end
+end
 =begin
 def create
   @toto = Toto.create(totos_params)
