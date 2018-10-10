@@ -31,6 +31,10 @@ class TotosController < ApplicationController
     end
   end
 
+  def index
+    @totos = Toto.all
+  end
+
   private
   def toto_params
     params.require(:toto).permit(:name, :description)
